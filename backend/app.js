@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session')
 const mongoose = require('mongoose');
-const { addDetails, homeDetails, detailModel,model} = require('./db')
+const { addDetails, homeDetails, detailModel,model, addExp} = require('./db')
 //import { checkLogin } from './db';
 const app = express()
 const port = 80;
@@ -103,19 +103,6 @@ app.post('/login',(req,res)=>{
       console.log("Error",err);
       res.json({message: "Data not found"})
     })
-    //console.log(username,password)
-    // await checkLogin(username,password).then((data)=>{
-    //   console.log(data)
-    // })
-    // if(checkLogin(username,password) == true){
-    //     console.log("user found")
-    //     req.session.isLoggedIn = true; // Set session data
-    //     req.session.username = username;
-    //     res.status(201).json({message:"user found"})
-    // }
-    // else{
-    //   res.json({message: "Data not fetched"})
-    // }
     
 })
 
@@ -144,6 +131,18 @@ app.post('/addtrip',(req,res)=>{
     res.status(201).json({message:"details added succesfully"})
   }
   
+})
+
+app.post('/addexp',(req,res)=>{
+  const data = req.body;
+  console.log(data);
+  if(addExp(data)){
+    res.json({message:'done'})
+  }
+  else{
+    res.json({message:'incomplete'})
+  }
+
 })
 
 app.listen(port,()=>{

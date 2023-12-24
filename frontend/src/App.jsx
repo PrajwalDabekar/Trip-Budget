@@ -10,6 +10,7 @@ import { useNavigate, Link } from "react-router-dom"
 import UserContext from './contexts/userContext'
 import TripDetails from './components/main/TripDetails'
 import MyTrips from './components/main/MyTrips'
+import AddExp from './components/main/AddExp'
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
       <Route path='addtrip' element={<AddTrip/>}/>
       <Route path='mytrips' element={<MyTrips/>}/>
       <Route path='tripdetails' element={<TripDetails/>} />
+      <Route path='addexp' element={<AddExp/>}/>
       </Route>
 
       )

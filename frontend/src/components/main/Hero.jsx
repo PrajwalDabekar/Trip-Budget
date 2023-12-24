@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom"
+import UserContext from "../../contexts/userContext";
 
 function Hero() {
+    const {data} = useContext(UserContext)
     const history = useNavigate()
     const goTotrips = ()=>{
         history('/mytrips')
@@ -11,7 +13,7 @@ function Hero() {
         <div class="relative w-full bg-white " >
   <div class="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
     <div class="flex flex-col justify-center px-4 py-6 md:py-16 lg:col-span-7 lg:gap-x-6 lg:px-6 lg:py-24 xl:col-span-6">
-      
+      <div className="font-bold md:hidden">Welcome {data.username}!</div>
       <h1 class="text-3xl font-bold tracking-tight text-black md:text-4xl lg:text-6xl">
       Your Journey, Simplified: <span className="text-purple-400">Plan</span>,<span className="text-green-400"> Explore</span>, <span className="text-blue-400">Enjoy</span>!</h1>
       

@@ -15,7 +15,7 @@ budget:Number,
 date:Date,
 days:Number,
 location:String,
-expense:[{price:Number,purpsose:String}],
+expense:[{price:Number,purpsose:String,note:String}],
 total_expense:Number
 }]
 })
@@ -67,4 +67,30 @@ async function homeDetails(userId){
         }
     })
 }
-module.exports = {checkLogin , addDetails , homeDetails , detailModel,model}
+
+async function addExp(data){
+    await detailModel.updateOne(
+        {
+            user: data.user,
+            "trip.tripname": data.tripname
+          },
+          {
+            $push: {
+              "trip.$.expense": {
+                price: data.amount,
+                purpose: data.purpose
+              }
+            },
+            $inc: {
+              "trip.$.total_expense": data.amount
+            }
+          }
+    ).then((res)=>{
+        console.log(res);
+        return true;
+    }).catch((err)=>{
+        console.log(err);
+        return false;
+    })
+}
+module.exports = {checkLogin , addDetails , homeDetails , detailModel,model ,addExp}
