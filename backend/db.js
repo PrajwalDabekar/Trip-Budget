@@ -15,7 +15,16 @@ budget:Number,
 date:Date,
 days:Number,
 location:String,
-expense:[{price:Number,purpsose:String,note:String}],
+expense:[
+    {price:{
+        type: Number,
+        require:true
+    },
+    purpose:{
+        type:String,
+        require:true
+    }
+}],
 total_expense:Number
 }]
 })
@@ -78,7 +87,7 @@ async function addExp(data){
             $push: {
               "trip.$.expense": {
                 price: data.amount,
-                purpose: data.purpose
+                purpose: data.desc
               }
             },
             $inc: {

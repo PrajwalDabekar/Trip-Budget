@@ -9,6 +9,7 @@ function AddExp() {
     const resData = location.state
     const [amt , setAmt] = useState()
     const [pur , setPur] = useState()
+    const [note , setNote] = useState()
     let expData = {}
     const handleSubmit = async (e)=>{
         e.preventDefault()
@@ -16,7 +17,8 @@ function AddExp() {
             user: data.username,
             tripname: resData.tripname,
             amount : amt,
-            purpose : pur
+            desc : pur,
+            note : note
         }
         
         console.log(expData)
@@ -72,7 +74,7 @@ function AddExp() {
               onChange={(e)=> setPur(e.target.value)}
               required
               >
-                <option value="">Select..</option>
+                <option value="" disabled>Select..</option>
                 <option value="travel/commute">Travel/Commute</option>
                 <option value="lunch/dinner">Lunch/Dinner</option>
                 <option value="accommodation">Accommodation</option>
@@ -83,6 +85,7 @@ function AddExp() {
               </select>
             </div>
           </div>
+        
           <div>
             <button
               type="submit"

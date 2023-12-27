@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useNavigate, Link } from "react-router-dom"
+import { useNavigate, Link, NavLink } from "react-router-dom"
 import UserContext from "../../contexts/userContext";
 
 function Header() {
@@ -15,8 +15,9 @@ function Header() {
         <div class="relative w-full bg-white">
   <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
     <div class="inline-flex items-center space-x-2">
-      
+      <NavLink to='/home'>
       <span className="font-bold">Trip Planner</span>
+      </NavLink>
       <div className="hidden sm:block italic">{" "}Welcome {data.username}!</div>
     </div>
     

@@ -11,6 +11,7 @@ import UserContext from './contexts/userContext'
 import TripDetails from './components/main/TripDetails'
 import MyTrips from './components/main/MyTrips'
 import AddExp from './components/main/AddExp'
+import SeeExp from './components/main/SeeExp'
 
 
 function App() {
@@ -56,6 +57,8 @@ function App() {
       <Route path='mytrips' element={<MyTrips/>}/>
       <Route path='tripdetails' element={<TripDetails/>} />
       <Route path='addexp' element={<AddExp/>}/>
+      <Route path='seeexp' element={<SeeExp/>}/>
+
       </Route>
 
       )

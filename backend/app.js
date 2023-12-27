@@ -145,6 +145,11 @@ app.post('/addexp',(req,res)=>{
 
 })
 
+app.post('/seeExp',(req,res)=>{
+  const data = req.body;
+  console.log(data);
+})
+
 app.listen(port,()=>{
     console.log(`web page served at ${port}`);
 })

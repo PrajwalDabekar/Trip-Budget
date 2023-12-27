@@ -10,12 +10,13 @@ function TripDetails(){
     console.log(data)
     const date = data.date.slice(0,10)
 
-    // useEffect(async()=>{
-    //   await axios.get()
-    // },[])
 
     const addExpense = ()=>{
       history('/addexp',{state:data})
+    }
+
+    const seeExpense = ()=>{
+      history('/seeExp',{state:data})
     }
 
     return(
@@ -73,7 +74,7 @@ function TripDetails(){
       
       <div className="mt-4">
             <button
-              //onClick={seeExpense}
+              onClick={seeExpense}
               class="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5  font-semibold leading-7 text-white hover:bg-black/80"
             >
               See Expense{" "}
