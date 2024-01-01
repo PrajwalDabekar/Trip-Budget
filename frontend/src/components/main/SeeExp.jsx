@@ -13,12 +13,19 @@ function SeeExp() {
     history('/analyse',{state:sendData})
   }
 
+  const handleClick = () => {
+    history('/tripdetails',{state : data})
+
+  }
     return(
         <>
         <section class="mx-auto w-full max-w-7xl px-4 py-4">
   <div class="flex justify-between md:flex-row md:items-center md:justify-between md:space-y-0">
-    <div>
+    <div><button
+    onClick={handleClick}
+    >
       <h2 class="text-lg font-semibold">{data.tripname} Trip</h2>
+      </button>
     </div>
     <div className="">
         <button className="underline" onClick={handleAnalyse}>
