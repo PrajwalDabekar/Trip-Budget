@@ -1,7 +1,7 @@
 import {  useEffect, useState } from 'react'
 import Login from './components/Login'
 import axios from 'axios'
-import { Route, Router, RouterProvider, createBrowserRouter, createRoutesFromElements, redirect } from 'react-router-dom'
+import { Route, Router, RouterProvider, createBrowserRouter, createRoutesFromElements, Navigate, Routes } from 'react-router-dom'
 import Home from './components/main/Home'
 import { useContext } from "react";
 
@@ -12,10 +12,18 @@ import TripDetails from './components/main/TripDetails'
 import MyTrips from './components/main/MyTrips'
 import AddExp from './components/main/AddExp'
 import SeeExp from './components/main/SeeExp'
+import Analyse from './components/main/Analyse'
 
 
 function App() {
-  const {auth , setAuth} = useContext(UserContext)
+  const [token , setToken] = useState(localStorage.getItem('authToken') || '')
+  // const navigate = useNavigate()
+  const handleLogin = (token)=>{
+    setToken(token);
+    localStorage.setItem('authToken', token);
+    // navigate('/dashboard');
+  }
+  //const {auth , setAuth} = useContext(UserContext)
   //const history = useNavigate()
   
   // const checksession = async()=>{
@@ -58,15 +66,26 @@ function App() {
       <Route path='tripdetails' element={<TripDetails/>} />
       <Route path='addexp' element={<AddExp/>}/>
       <Route path='seeexp' element={<SeeExp/>}/>
-
+      <Route path='analyse' element={<Analyse/>}/>
       </Route>
 
       )
   )
 
   return (
-   
-      <RouterProvider router={router} />
+    //  <Router>
+    //   <Routes>
+    //     <Route exact path='/' element={<Login/>}/>
+    //     <Route path='/home' element={<Home/>}/>
+    //     <Route path='/addtrip' element={<AddTrip/>}/>
+    //     <Route path='/mytrips' element={<MyTrips/>}/>
+    //     <Route path='/tripdetails' element={<TripDetails/>} />
+    //     <Route path='/addexp' element={<AddExp/>}/>
+    //     <Route path='/seeexp' element={<SeeExp/>}/>
+
+    //     </Routes>
+    //  </Router>
+    <RouterProvider router={router} />
     // </UserContextProvider>
     
     // <Router>

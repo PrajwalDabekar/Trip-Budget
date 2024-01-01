@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function TripDetails(){
     const history = useNavigate()
@@ -10,6 +10,9 @@ function TripDetails(){
     console.log(data)
     const date = data.date.slice(0,10)
 
+    const handleAnalyse = ()=>{
+      history('/analyse',{state:data.expense})
+    }
 
     const addExpense = ()=>{
       history('/addexp',{state:data})
@@ -53,7 +56,7 @@ function TripDetails(){
   <div class="flex items-center justify-center bg-white  px-4 py-4 sm:px-6 sm:py-1 lg:px-8">
     <div class="  xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
     <div className=''><div className=''>
-      <img src="https://sgtrekkers.in/wp-content/uploads/2023/10/Raigad-Parikrama-Route-H3.jpg" className="h-full rounded-md w-full " />
+      <img src="https://sgtrekkers.in/wp-content/uploads/2023/10/Raigad-Parikrama-Route-H3.jpg" className="h-full rounded-md w-full sm:h-[300px] " />
 </div></div>
       <div className="mt-4 border-y">
         <div className="font-bold">{data.tripname}</div>
@@ -68,10 +71,13 @@ function TripDetails(){
         </div>
         <div>
           <span className="font-semibold">Total Expense: </span>
-          {data.total_expense}
+          <span className="bg-red-100 text-md font-semibold rounded-md px-1 text-red-800">{data.total_expense}</span>
         </div>
       </div>
-      
+      <div className="flex justify-end mt-2 underline">
+        <button onClick={handleAnalyse}>
+      Analyse Expense</button>
+      </div>
       <div className="mt-4">
             <button
               onClick={seeExpense}

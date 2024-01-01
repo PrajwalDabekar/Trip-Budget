@@ -15,14 +15,14 @@ function MyTrips() {
 
         })
     },[])
-    const tripdata = homedata.reverse()
+    const tripdata = homedata
     console.log(tripdata)
     
     return(
         <>
         <Header/>
         <div className="flex flex-col mx-10 sm:grid gap-x-2 gap-y-4 grid-cols-3 p-4 justify-center content-center justify-items-center ml-12">
-        {tripdata.reverse().map((data)=>(
+        {tripdata.map((data)=>(
           <div  key={data._id}className='w-full justify-self-center'>
             {/* <Link to='/tripdetails' params = {{tripdata:data}}> */}
             <Card data={data}/>

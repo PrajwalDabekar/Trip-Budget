@@ -1,21 +1,31 @@
 import React, { useEffect, useState } from "react";
 import ExpTable from "./ExpTable";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function SeeExp() {
-    const location = useLocation()
-    const data = location.state
-   const sendData = data.expense
+  const history = useNavigate()
+  const location = useLocation()
+  const data = location.state
+  const sendData = data.expense
+
+   const handleAnalyse = ()=>{
+    history('/analyse',{state:sendData})
+  }
 
     return(
         <>
         <section class="mx-auto w-full max-w-7xl px-4 py-4">
-  <div class="flex flex-col space-y-4 md:flex-row md:items-center md:justify-between md:space-y-0">
+  <div class="flex justify-between md:flex-row md:items-center md:justify-between md:space-y-0">
     <div>
-      <h2 class="text-lg font-semibold">{data.tripname}</h2>
+      <h2 class="text-lg font-semibold">{data.tripname} Trip</h2>
     </div>
+    <div className="">
+        <button className="underline" onClick={handleAnalyse}>
+      Analyse Expense</button>
+      </div>
   </div>
+
   <div class="mt-6 flex flex-col">
     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">

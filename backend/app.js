@@ -1,11 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session')
+const jwt = require('jsonwebtoken');
+
 const mongoose = require('mongoose');
 const { addDetails, homeDetails, detailModel,model, addExp} = require('./db')
 //import { checkLogin } from './db';
 const app = express()
 const port = 80;
+
+const mySecretkey = 'myTripbudgetPlanner';
 //mongoose.connect("mongodb://localhost:27017/tripPlanner",{useNewUrlParser:true});
 
 //const mydb = new ManageDb()
@@ -94,7 +98,8 @@ app.post('/login',(req,res)=>{
       model.findOne({user:username,password:password}).then((data)=>{
       console.log(data)
       if (data !== null) {
-        res.json({message: "Data Found"})
+        const token = jwt.sign({userId:data.user},mySecretkey,{expiresIn: '1h'});
+        res.json({message:"Data Found"})
       }
       else{
         res.json({message: "Data not found"})  
@@ -111,7 +116,7 @@ app.post('/home',async(req,res)=>{
   console.log(userId)
   await detailModel.findOne({user:userId},{_id:0,trip:1}).then((resData)=>{
     if(resData){
-    console.log(resData)
+    console.log(resData.trip.reverse())
     // let resData = res
       res.json(resData)
     }

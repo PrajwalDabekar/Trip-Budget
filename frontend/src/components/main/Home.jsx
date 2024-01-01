@@ -20,8 +20,8 @@ function Home(){
 
         })
     },[])
-    const tripdata = homedata.reverse()
-    console.log(tripdata)
+    // const tripdata = homedata.reverse()
+    console.log(homedata)
     return(
       <>
       <Header/>

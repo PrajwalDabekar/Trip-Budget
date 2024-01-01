@@ -35,8 +35,10 @@ function AddExp() {
     return(
         <section>
   <div class="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
-    <div class="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
-      
+    <div class="w-[250px] xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
+    <div class="mb-2 flex justify-center">
+        <img src="https://cdn.icon-icons.com/icons2/1975/PNG/512/tent_122925.png" width="50" height="50"/>
+      </div>
       <h2 class="text-center text-2xl font-bold leading-tight text-black">
         Add Your Expense
       </h2>
@@ -74,7 +76,7 @@ function AddExp() {
               onChange={(e)=> setPur(e.target.value)}
               required
               >
-                <option value="" disabled>Select..</option>
+                <option value="">Select..</option>
                 <option value="travel/commute">Travel/Commute</option>
                 <option value="lunch/dinner">Lunch/Dinner</option>
                 <option value="accommodation">Accommodation</option>
